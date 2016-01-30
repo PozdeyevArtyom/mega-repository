@@ -178,14 +178,14 @@ namespace MyLibrary
                 if (index < Count)
                     return data[index];
                 else
-                    throw new IndexOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
             set
             {
                 if (index < Count)
                     data[index] = value;
                 else
-                    throw new IndexOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
         }
     }

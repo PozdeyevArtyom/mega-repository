@@ -78,14 +78,14 @@ namespace MyLibrary
                     n = n.next;
                 }
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
         }
 
         //метод удаления элемента из очереди
         public override T Dequeue()
         {
             if (Head == null)
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Очередь пуста.");
             else
             {
                 T result = Head.data;
@@ -138,7 +138,10 @@ namespace MyLibrary
         //метод, возвращающий первый элемент
         public override T Peek()
         {
-            return Head.data;
+            if (Head == null)
+                throw new InvalidOperationException("Очередь пуста.");
+            else
+                return Head.data;
         }
 
         //неработающий метод, определён из-за интерфейса ICollection
@@ -160,7 +163,7 @@ namespace MyLibrary
                     return n.data;
                 }
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
             set
             {
@@ -172,7 +175,7 @@ namespace MyLibrary
                     n.data = value;
                 }
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
         }
     }

@@ -100,14 +100,14 @@ namespace MyLibrary
                     p = (p + 1) % Capacity;
                 }
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
         }
 
         //метод удаления элемента из очереди
         public override T Dequeue()
         {
             if (head == tail && !full)
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Очередь пуста.");
             else
             {
                 if (full == true) full = false;
@@ -162,7 +162,10 @@ namespace MyLibrary
         //метод, возвращающий первый элемент
         public override T Peek()
         {
-            return data[head];
+            if (head == tail && !full)
+                throw new InvalidOperationException("Очередь пуста.");
+            else
+                return data[head];
         }
 
         //неработающий метод, определён из-за интерфейса ICollection
@@ -179,14 +182,14 @@ namespace MyLibrary
                 if (index < Count)
                     return data[index];
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
             set
             {
                 if (index < Count)
                     data[index] = value;
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
         }
 

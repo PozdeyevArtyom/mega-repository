@@ -22,7 +22,7 @@ namespace MyLibrary
                 data = new T[Capacity];
             }
             else
-                throw new ArgumentOutOfRangeException("Capacity", "Вместимость списка должна быть натуральным числом.");
+                throw new ArgumentOutOfRangeException("Capacity", "Вместимость стека должна быть натуральным числом.");
         }
 
         public MyArrayStack(MyStack<T> Stack)
@@ -70,7 +70,7 @@ namespace MyLibrary
                 if (i < array.Length)
                     array[i] = data[i - index];
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
         }
 
         protected override void Dispose(bool disposing)
@@ -85,12 +85,18 @@ namespace MyLibrary
 
         public override T Peek()
         {
-            return data[Count - 1];
+            if (Count == 0)
+                throw new InvalidOperationException("Стек пуст.");
+            else
+                return data[Count - 1];
         }
 
         public override T Pop()
         {
-            return data[--Count];
+            if (Count == 0)
+                throw new InvalidOperationException("Стек пуст.");
+            else
+                return data[--Count];
         }
 
         public override void Push(T elem)
@@ -120,14 +126,14 @@ namespace MyLibrary
                 if (index < Count)
                     return data[index];
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
             set
             {
                 if (index < Count)
                     data[index] = value;
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
         }
 

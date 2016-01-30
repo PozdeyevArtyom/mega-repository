@@ -73,7 +73,7 @@ namespace MyLibrary
                     n = n.next;
                 }
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
         }
 
         protected override void Dispose(bool disposing)
@@ -88,16 +88,23 @@ namespace MyLibrary
 
         public override T Peek()
         {
+            if (Top == null)
+                throw new InvalidOperationException("Стек пуст.");
             return Top.data;
         }
 
         public override T Pop()
         {
-            T result = Top.data;
-            Top = Top.prev;
-            Top.next = null;
-            Count--;
-            return result;
+            if (Top == null)
+                throw new InvalidOperationException("Стек пуст.");
+            else
+            {
+                T result = Top.data;
+                Top = Top.prev;
+                Top.next = null;
+                Count--;
+                return result;
+            }
         }
 
         public override void Push(T elem)
@@ -134,7 +141,7 @@ namespace MyLibrary
                     return n.data;
                 }
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
             set
             {
@@ -148,7 +155,7 @@ namespace MyLibrary
                     n.data = value;
                 }
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
         }
     }

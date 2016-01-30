@@ -98,7 +98,7 @@ namespace MyLibrary
                     p = p.next;
                 }
                 else
-                    throw new IndexOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
         }
 
         //метод Dispose
@@ -140,7 +140,7 @@ namespace MyLibrary
             if (index < Count)
                 return this[index];
             else
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException("Индекс вне диапазона.");
         }
 
         //метод вставки элемента на определённую позицию в списке
@@ -213,7 +213,7 @@ namespace MyLibrary
                     return n.data;
                 }
                 else
-                    throw new IndexOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
 
             set
@@ -226,7 +226,7 @@ namespace MyLibrary
                     n.data = value;
                 }
                 else
-                    throw new IndexOutOfRangeException();
+                    throw new IndexOutOfRangeException("Индекс вне диапазона.");
             }
         }
     }
